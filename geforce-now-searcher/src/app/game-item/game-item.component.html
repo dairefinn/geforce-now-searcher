@@ -1,0 +1,16 @@
+<div
+  class="game-item-container"
+  [ngClass]="'store-' + game.store"
+  [id]="game.id"
+  (click)="openGameStorePage()"
+  *ngIf="game; else noGame"
+  >
+  <div class="game-item-container-inner">
+    <img class="game-image" [src]="game.imageURL"/>
+    <div class="game-title">{{game.title}}</div>
+  </div>
+</div>
+
+<ng-template #noGame>
+  <div>No game</div>
+</ng-template>

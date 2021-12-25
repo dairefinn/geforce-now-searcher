@@ -1,0 +1,48 @@
+<div class="main-container">
+  <ng-container *ngIf="gamesList.length > 0; else noGames;">
+    <div class="search-container">
+      <label>Search: </label>
+      <input [formControl]="searchControl"/>
+    </div>
+
+    <div class="store-search">
+      <select multiple [formControl]="storeControl">
+        <option [ngValue]="eGameStore.EPIC">Epic</option>
+        <option [ngValue]="eGameStore.STEAM">Steam</option>
+        <option [ngValue]="eGameStore.UBISOFT">Ubisoft</option>
+        <option [ngValue]="eGameStore.ORIGIN">Origin</option>
+        <option [ngValue]="eGameStore.GOG">GOG</option>
+      </select>
+    </div>
+
+    <div class="steamid-search">
+      <label>SteamID: </label>
+      <input [formControl]="steamURLControl"/>
+      <button (click)="fetchSteamGamesForUser()">Fetch games</button>
+    </div>
+
+    <div class="owned-search">
+      <label>
+        Owned: 
+        <input type="checkbox" [formControl]="ownedControl"/>
+      </label>
+    </div>
+
+    <div class="games-list">
+      <ng-container *ngIf="gamesListFiltered.length > 0; else noGamesFiltered;">
+        <ng-container *ngFor="let game of gamesListFiltered; index as index; first as isFirst; last as isLast;">
+          <div class="game-item-wrapper">
+            <app-game-item [game]="game"></app-game-item>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-template #noGames>
+    <div>No games found</div>
+  </ng-template>
+  <ng-template #noGamesFiltered>
+    <div>No search results</div>
+  </ng-template>
+</div>

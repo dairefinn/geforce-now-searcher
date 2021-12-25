@@ -1,0 +1,22 @@
+.main-container {
+  background-color: #F7F7F7;
+
+  .search-container {
+    padding: 10px;
+
+    // & > input {
+    //   display: block;
+    //   width: 100%;
+    // }
+  }
+
+  .games-list {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    // padding: 10px;
+  
+    .game-item-wrapper {
+      margin: 5px;
+    }
+  }
+}
